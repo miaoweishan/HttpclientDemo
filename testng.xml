@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite">
+	<test name="Test" preserve-order="true">
+		<classes>
+			<class name="httpTest.LoginTest" />
+			<class name="httpTest.TestDemo">
+				<methods preserve-order="true">
+	              <include name="Submit" />
+	              <include name="paymentOrde" />
+	              <include name="rechargeSwift" />
+	            </methods>
+	         </class>
+	
+		</classes>
+	</test>
+</suite>
+			

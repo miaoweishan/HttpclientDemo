@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="1194" started-at="2018-05-04T05:07:07Z" finished-at="2018-05-04T05:07:08Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="1194" started-at="2018-05-04T05:07:07Z" finished-at="2018-05-04T05:07:08Z">
+      <class name="httpTest.TestApp">
+        <test-method status="PASS" signature="mandoLogin()[pri:0, instance:httpTest.TestApp@6d00a15d]" name="mandoLogin" is-config="true" duration-ms="643" started-at="2018-05-04T13:07:07Z" finished-at="2018-05-04T13:07:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- mandoLogin -->
+        <test-method status="PASS" signature="getUrl()[pri:0, instance:httpTest.TestApp@6d00a15d]" name="getUrl" duration-ms="534" started-at="2018-05-04T13:07:08Z" finished-at="2018-05-04T13:07:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getUrl -->
+      </class> <!-- httpTest.TestApp -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

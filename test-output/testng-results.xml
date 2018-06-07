@@ -2,20 +2,38 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="1194" started-at="2018-05-04T05:07:07Z" finished-at="2018-05-04T05:07:08Z">
+  <suite name="Default suite" duration-ms="920" started-at="2018-05-30T03:57:18Z" finished-at="2018-05-30T03:57:19Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="1194" started-at="2018-05-04T05:07:07Z" finished-at="2018-05-04T05:07:08Z">
-      <class name="httpTest.TestApp">
-        <test-method status="PASS" signature="mandoLogin()[pri:0, instance:httpTest.TestApp@6d00a15d]" name="mandoLogin" is-config="true" duration-ms="643" started-at="2018-05-04T13:07:07Z" finished-at="2018-05-04T13:07:08Z">
+    <test name="Default test" duration-ms="920" started-at="2018-05-30T03:57:18Z" finished-at="2018-05-30T03:57:19Z">
+      <class name="httpTest.ChappieLoginTest">
+        <test-method status="PASS" signature="Testlogin(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)[pri:0, instance:httpTest.ChappieLoginTest@5f2108b5]" name="Testlogin" duration-ms="329" started-at="2018-05-30T11:57:19Z" data-provider="testCasedata" finished-at="2018-05-30T11:57:19Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[admin]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[123456]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[true]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- mandoLogin -->
-        <test-method status="PASS" signature="getUrl()[pri:0, instance:httpTest.TestApp@6d00a15d]" name="getUrl" duration-ms="534" started-at="2018-05-04T13:07:08Z" finished-at="2018-05-04T13:07:08Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getUrl -->
-      </class> <!-- httpTest.TestApp -->
+        </test-method> <!-- Testlogin -->
+      </class> <!-- httpTest.ChappieLoginTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

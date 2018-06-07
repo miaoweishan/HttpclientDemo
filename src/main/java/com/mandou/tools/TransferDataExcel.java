@@ -2,7 +2,9 @@ package com.mandou.tools;
 
 import java.io.IOException;
 import java.util.List;
-
+/*
+ * 读取excle 表格内容
+ */
 public class TransferDataExcel {
 	static ExcelMethonClass EMC=new ExcelMethonClass();
 	static String filepath=PropertiesUtil.getValueBykey("YJexcelDir");//从配置文件中读取Excel表格的路径
@@ -45,7 +47,7 @@ public class TransferDataExcel {
 	}
 	
 	public static void main(String[] args) {
-		TransferDataExcel.getObjectData("3");
+		TransferDataExcel.getObjectData("2");
 		
 	}
 

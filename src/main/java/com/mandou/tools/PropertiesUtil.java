@@ -8,10 +8,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
+/*
+ * 读取配.properties 配置文件
+ */
 
 public class PropertiesUtil {
-//	private static String filepath=System.getProperty("user.dir")+"\\file\\config.properties";
-	private static String filepath=System.getProperty("./file/config.properties");
+//	private static String filepath=System.getProperty("user.dir")+"\\src\\main\\config\\config.properties";
+	private static String filepath=("src/main/config/config.properties");
 	
 	//读取.properties文件
 	public static String getValueBykey(String key) {
@@ -52,9 +55,9 @@ public class PropertiesUtil {
 		}
 	}
 	
-//	public static void main(String[] args) {
-//		String a=propertiesUtil.getValueBykey("database.url");
-//		System.out.println(a);
-//	}
+	public static void main(String[] args) {
+		String a=PropertiesUtil.getValueBykey("YJexcelDir");
+		System.out.println(a);
+	}
 
 }

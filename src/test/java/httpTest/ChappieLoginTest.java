@@ -23,7 +23,6 @@ public class ChappieLoginTest {
 		Object[][] data = TransferDataExcel.getObjectData("2");
 	 	//System.out.println(data.toString());
 		return data;
-		
 	}
 	
 	@Test(dataProvider = "testCasedata")
@@ -37,7 +36,7 @@ public class ChappieLoginTest {
 		
 		JSONObject actual01 = new JSONObject(resStr);
 		String actual = actual01.get("success").toString();
-		
+		log.info("响应结果： "+actual);
 		assertEquals(actual, expected.toString());
 	}
 	

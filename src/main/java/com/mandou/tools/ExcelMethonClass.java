@@ -20,8 +20,6 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import httpTest.ResolveLoanApply;
-
 public class ExcelMethonClass {
 	/*
 	 * 判断文件类型

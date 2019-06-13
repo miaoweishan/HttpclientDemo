@@ -21,19 +21,19 @@
 	    <artifactId>testng</artifactId>
 	    <version>6.9.10</version>
 	    <scope>test</scope>
-	</dependency>	
+	</dependency>
+		
 	<dependency>
 	    <groupId>org.apache.httpcomponents</groupId>
 	    <artifactId>httpclient</artifactId>
 	    <version>4.5.2</version>
 	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.json/json -->
 	<dependency>
-	    <groupId>org.json</groupId>
-	    <artifactId>json</artifactId>
-	    <version>20160810</version>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>httpmime</artifactId>
+	    <version>4.5.3</version>
 	</dependency>
-	
+		
     <dependency>
 	    <groupId>log4j</groupId>
 	    <artifactId>log4j</artifactId>
@@ -46,23 +46,28 @@
 	    <version>5.1.40</version>
 	</dependency>
 	
+	<!-- Microsoft Office 解析操作 -->
 	<dependency>
-  		<groupId>org.apache.poi</groupId>
-  		<artifactId>poi</artifactId>
-  		<version>3.10-FINAL</version>
-  	</dependency>
+		<groupId>org.apache.poi</groupId>
+		<artifactId>poi</artifactId>
+		<version>3.15</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.poi</groupId>
+		<artifactId>poi-scratchpad</artifactId>
+		<version>3.15</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.poi</groupId>
+		<artifactId>poi-ooxml</artifactId>
+		<version>3.15</version>
+	</dependency>
   	
   	<dependency>
-  		<groupId>org.apache.poi</groupId>
-  		<artifactId>poi-ooxml</artifactId>	
-  		<version>3.10-FINAL</version>
-  	</dependency>
-  	
-  	 <dependency>
 	    <groupId>com.google.code.gson</groupId>
 	    <artifactId>gson</artifactId>
 	    <version>2.3.1</version>
-	 </dependency>
+	</dependency>
 	 
 	<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
 	<dependency>
@@ -77,6 +82,13 @@
 	    <artifactId>commons-lang3</artifactId>
 	    <version>3.4</version>
 	</dependency>
+	<!-- 操作Redis -->
+	<dependency>
+	    <groupId>redis.clients</groupId>
+	    <artifactId>jedis</artifactId>
+	    <version>3.0.1</version>
+	</dependency>
+	
 
   </dependencies>
 </project>

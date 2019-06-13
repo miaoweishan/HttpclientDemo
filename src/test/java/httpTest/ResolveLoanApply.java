@@ -7,13 +7,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.json.JSONObject;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.google.gson.Gson;
-import com.mandou.httpUtil.httpsUtil;
+import com.mandou.httpUtil.HttpUtils;
 import com.mandou.tools.DateFormat;
 import com.mandou.tools.JDBCUtil;
 import com.mandou.tools.TransferDataExcel;
@@ -22,7 +24,6 @@ import com.mandou.tools.TransferDataExcel;
  */
 public class ResolveLoanApply {
 	private static Logger log = Logger.getLogger(ResolveLoanApply.class);
-	private static String RLAurl="https://test-mobile.mandofin.com/loan/resolveLoanApply.json";
 			
 	@DataProvider
 	public static Object[][] testCaseData(){
@@ -54,8 +55,10 @@ public class ResolveLoanApply {
 	}
 	
 	@Test(dataProvider="testCaseData")
-	public void resolveLoanApolyTset(Object caseid,Object platformNo,Object mobile,Object rate,Object outsideNo,Object loanTerm,Object money,Object expected) {
+	public void resolveLoanApolyTset(Object caseid,Object host,Object path,Object platformNo,Object mobile,Object rate,Object outsideNo,Object loanTerm,Object money,Object expected) {
 		Gson gson = new Gson();
+		Map<String, String> headers = null;
+		
 		String accountNo = JDBCUtil.getSelect("select * from account where userId=(select id from `user` where mobile="+"'"+mobile+"') and role='BORROWERS'", "no").get(0).toString();	
 		String applyIdCard = JDBCUtil.getSelect("select * from `user` where mobile="+"'"+mobile+"'", "idCard").get(0).toString();
 		String name = JDBCUtil.getSelect("select * from `user` where mobile="+"'"+mobile+"'", "realname").get(0).toString();
@@ -94,13 +97,19 @@ public class ResolveLoanApply {
 		params.put("Sign", sign);		
 //		params.put("protocolPdf", value);
 		
-		String resStrIS=httpsUtil.getHttpsPost(RLAurl, params);
-		JSONObject actualIS01 = new JSONObject(resStrIS);	
-		log.info("actualIS01: " + actualIS01);
-		String actualIS = actualIS01.get("success").toString();
-		log.info("actualIS: " + actualIS);
-		assertEquals(actualIS, expected.toString());
-	}
-	
+		String resStrIS;
+		try {
+			resStrIS = HttpUtils.doPost(host.toString(), path.toString(), headers, params);
+			JSONObject actualIS01 = JSON.parseObject(resStrIS);	
+			log.info("actualIS01: " + actualIS01);
+			String actualIS = actualIS01.get("success").toString();
+			log.info("actualIS: " + actualIS);
+			assertEquals(actualIS, expected.toString());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}	
 
 }

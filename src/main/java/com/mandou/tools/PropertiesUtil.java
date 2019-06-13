@@ -8,12 +8,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
+
+import org.apache.poi.ss.formula.functions.T;
 /*
  * 读取配.properties 配置文件
  */
 
 public class PropertiesUtil {
-//	private static String filepath=System.getProperty("user.dir")+"\\src\\main\\config\\config.properties";
 	private static String filepath=("src/main/config/config.properties");
 	
 	//读取.properties文件

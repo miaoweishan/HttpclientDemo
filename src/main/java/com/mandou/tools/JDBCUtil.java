@@ -21,10 +21,6 @@ public class JDBCUtil {
 
 	//连接数据库
 	public static Connection getconn() {
-//		String driver="com.mysql.jdbc.Driver";
-//		String url="jdbc:mysql://192.168.0.7:3306/mandofin_test";
-//		String username="root";
-//		String password="dev@110";
 		String driver = PropertiesUtil.getValueBykey("database.driverClassName");
 		String url = PropertiesUtil.getValueBykey("database.url");
 		String username = PropertiesUtil.getValueBykey("database.userName");
@@ -132,8 +128,7 @@ public class JDBCUtil {
 	
 	public static void main(String[] args) {
 		String no="TZ201604010001";
-		
-		
+				
 		JDBCUtil.getSelect("select * from `order` where `no`="+"'"+no+"'","state");
 		
 	}

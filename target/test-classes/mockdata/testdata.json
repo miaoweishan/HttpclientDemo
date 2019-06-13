@@ -1,0 +1,40 @@
+[
+	{
+		"description":"这是一个带参数的post请求",
+		"request":{
+			"uri":"/postwithparam",
+			"method":"post",
+			"forms":{
+				"name":"huhansan",
+				"sex":"man"
+			}
+		},
+		"response":{
+			"text":"我胡汉三带着参数回来了！！！"
+		}
+	},
+	
+	{
+		"description":"这是一个带cookies信息的post请求",
+		"request":{
+			"uri":"/post/with/cookies",
+			"method":"post",
+			"cookies":{
+				"login":"true"
+			},
+			"forms":{
+				"name":"huhansan",
+				"age":"18"
+			}
+		},
+		"response":{
+			"status":200,
+			"json":{
+				"huhansan":"success",
+				"status":"1"
+			}
+		}
+	}
+
+]
+	

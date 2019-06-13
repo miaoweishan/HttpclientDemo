@@ -6,12 +6,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.json.JSONObject;
-import org.testng.annotations.BeforeTest;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.mandou.httpUtil.httpUtil;
+import com.mandou.httpUtil.HttpUtils;
 import com.mandou.tools.JDBCUtil;
 import com.mandou.tools.TransferDataExcel;
 /*
@@ -19,7 +20,6 @@ import com.mandou.tools.TransferDataExcel;
  */
 public class CreatePlanTest {
 	private static Logger log = Logger.getLogger(ChappieLoginTest.class);
-	private static String createplanurl = "http://test-chappie.mandofin.com/plan/create.json";
 	
 	//读取Excel表格中测试数据
 	@DataProvider
@@ -31,7 +31,7 @@ public class CreatePlanTest {
 	}
 	
 	@Test(dataProvider="testCasedata")
-	public void TestCreatePlan(Object caseid, Object name, Object planRate, Object raiseRate, Object startTime, Object endTime,
+	public void TestCreatePlan(Object caseid, Object host, Object path, Object name, Object planRate, Object raiseRate, Object startTime, Object endTime,
 			 Object settlementMode, Object transfer, Object vipAppendRate, Object limitMoney, Object purchaseMoney,Object commonLabel,
 			 Object hotLabel, Object hotLabelUrl, Object showTime, Object advertisingState, Object advertisingText,Object advertisingUrl,Object expected) 
 	{
@@ -41,7 +41,9 @@ public class CreatePlanTest {
 			JDBCUtil.setDelete("delete from purchase_advance_plan where `name`="+"'"+name+"'");
 		}
 		
+		Map<String, String> headers = null;
 		Map<String, Object> params = new HashMap<String, Object>();
+		
 		params.put("name", name);
 		params.put("planRate", planRate);
 		params.put("raiseRate", raiseRate);
@@ -61,11 +63,18 @@ public class CreatePlanTest {
 		params.put("showTime", showTime);
 		params.put("advertisingState", advertisingState);
 		
-		String resStr = httpUtil.getHttpPost(createplanurl, params);
-		JSONObject actual01 = new JSONObject(resStr);
-		String actual = actual01.get("success").toString();
-		System.out.println("actual01:"+actual01);
-		assertEquals(actual, expected.toString());
+		String resStr;
+		try {
+			resStr = HttpUtils.doPost(host.toString(), path.toString(), headers, params);
+			JSONObject actual01 = JSON.parseObject(resStr);
+			String actual = actual01.get("success").toString();
+			System.out.println("actual01:"+actual01);
+			assertEquals(actual, expected.toString());
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

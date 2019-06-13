@@ -5,17 +5,19 @@ import static org.testng.Assert.assertEquals;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.http.HttpResponse;
 import org.apache.log4j.Logger;
-import org.json.JSONObject;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.mandou.httpUtil.httpUtil;
+import com.mandou.httpUtil.HttpUtils;
 import com.mandou.tools.TransferDataExcel;
 
 public class ChappieLoginTest {
 	private static Logger log = Logger.getLogger(ChappieLoginTest.class);
-	private static String loginurl = "http://test-chappie.mandofin.com/exclude/manager/login.json";
 	
 	//读取Excel表格中测试数据
 	@DataProvider
@@ -26,27 +28,50 @@ public class ChappieLoginTest {
 	}
 	
 	@Test(dataProvider = "testCasedata")
-	public void Testlogin(Object caseid, Object userName, Object password, Object expected) {
+	public void Testlogin(Object caseid, Object host, Object path, Object userName, Object password, Object expected) {
+		Map<String, String> headers = null;
+		String resStr = "";
 		//把参数放到map集合内
 		Map<String, Object> params = new HashMap<String, Object>();
+		
 		params.put("userName", userName);
 		params.put("password", password);
 		
-		String resStr = httpUtil.getHttpPost(loginurl, params);
+		try {
+			resStr = HttpUtils.doPost(host.toString(), path.toString(), headers, params);
+			JSONObject actual01 = JSON.parseObject(resStr);
+			String actual = actual01.get("success").toString();
+			log.info("响应结果： "+actual);
+			assertEquals(actual, expected.toString());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		JSONObject actual01 = new JSONObject(resStr);
-		String actual = actual01.get("success").toString();
-		log.info("响应结果： "+actual);
-		assertEquals(actual, expected.toString());
 	}
 	
-	public static void chappieLogin(Object userName, Object password) {
+	public static void chappieLogin(String userName, String password) {
+		Map<String, String> headers = null;
+		String resStr = "";
+		String host = "";
+		String path = "";
+		
 		//把参数放到map集合内
 		Map<String, Object> params = new HashMap<String, Object>();
+		
 		params.put("userName", userName);
 		params.put("password", password);
 		
-		httpUtil.getHttpPost(loginurl, params);
+		try {
+			resStr = HttpUtils.doPost(host, path, headers, params);
+			JSONObject actual01 = JSON.parseObject(resStr);
+			String actual = actual01.get("success").toString();
+			log.info("响应结果： "+actual);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

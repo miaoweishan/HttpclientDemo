@@ -10,8 +10,11 @@
 	              <include name="rechargeSwift" />
 	            </methods>
 	         </class>
-	
 		</classes>
 	</test>
+	<!--配置监听器-->
+	<listeners>
+        <listener class-name="com.mandou.listener.ExtentTestNGIReporterListener"/>
+    </listeners>
 </suite>
 			

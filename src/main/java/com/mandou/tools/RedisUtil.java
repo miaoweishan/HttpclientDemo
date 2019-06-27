@@ -7,7 +7,6 @@ package com.mandou.tools;
  *
  */
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +17,7 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 public class RedisUtil {
-	private static Logger log = Logger.getLogger(ExcelMethonClass.class);
+	private static Logger log = Logger.getLogger(RedisUtil.class);
 	//服务器IP地址
     private static String ADDR = PropertiesUtil.getValueBykey("redis.database.url");
     //端口
